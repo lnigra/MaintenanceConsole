@@ -1,4 +1,4 @@
-#include "SD_xsftp.h"
+#include "XSFTP.h"
 File myFile;
 #if defined(__MK64FX512__) || defined(__MK66FX1M0__)
   // Teensy 3.5-6 internal SD card

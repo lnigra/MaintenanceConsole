@@ -1,7 +1,7 @@
 #include "Arduino.h"
 #include <SD.h>
 #include <SPI.h>
-#include "SD_xsftp.h"
+#include "XSFTP.h"
 
 SD_xsftp::SD_xsftp( int sd_csel, int ser_port_no, int ser_port_bps, int blocking ) {
   
