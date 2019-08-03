@@ -24,18 +24,19 @@
 #include "Maint.h"
 
 int loopCount;
-boolean outputFlg;
+boolean outputFlg, ledState;
 // Hard-wired on Teensy 3.5, 3.6. If < 3.5, select a pin
 const int sdChipSelect = BUILTIN_SDCARD;
 
 void setup() {
-  
+  pinMode( 13, OUTPUT );
+  digitalWrite( 13, ledState = HIGH );
   Serial.begin(9600);
-  while (!Serial);
+  delay( 1000 );
   while ( Serial.available() ) Serial.read();
 
   Serial1.begin( 115200 );
-  while (!Serial1);
+  delay( 1000 );
   while ( Serial.available() ) Serial1.read();
   
   Serial.print( "Initializing SD card..." );
@@ -111,5 +112,9 @@ void loop() {
   }
   delay( 200 ); // Simulates other stuff in the loop()
   loopCount++;
-  if ( loopCount % 10 == 0 ) Serial.println( loopCount );
+  if ( loopCount % 10 == 0 ) {
+    Serial.println( loopCount );
+    Serial1.println( loopCount );
+    digitalWrite( 13, ledState = !ledState );
+  }
 }
